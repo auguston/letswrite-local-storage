@@ -1,43 +1,61 @@
 <!DOCTYPE html>
-<html lang="en"></html>
+<html lang="zh-tw"></html>
 <head>
   <meta charset="UTF-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>改變字型大小、邊線及背景顏色</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"/>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous"/>
   <link rel="stylesheet" href="assets/css/screen.css"/>
 </head>
 <body>
   <div class="container">
-    <hr/>
     <div class="row">
-      <div class="col-sm-3">
-        <div class="form-group">
-          <label class="label-control">文字大小</label>
-          <!-- .changeFontSize 改變字型大小的js--><a id="font-plus" href="#" class="btn btn-primary js-changeFontSize">A+</a><a id="font-default" href="#" class="btn btn-primary js-changeFontSize">default</a><a id="font-mini" href="#" class="btn btn-primary js-changeFontSize">A-</a>
+      <div class="col-md-12">
+        <h2>功能按鈕</h2>
+        <hr/>
+      </div>
+      <div class="col-md-3">
+        <p>文字大小</p>
+        <div class="row">
+          <!-- .changeFontSize 改變字型大小的js--><a id="font-plus" href="#" class="btn btn-block btn-primary js-changeFontSize">A+</a><a id="font-mini" href="#" class="btn btn-block btn-primary js-changeFontSize">A-</a><a id="font-default" href="#" class="btn btn-block btn-warning js-changeFontSize">default</a>
         </div>
       </div>
-      <div class="col-sm-3">
-        <div class="form-group">
-          <label class="label-control">背景顏色</label>
-          <input id="js-bgcolor" type="color" class="form-control"/>
-        </div>
-      </div>
-      <div class="col-sm-3">
-        <div class="form-group">
-          <label class="label-control">邊線顏色</label>
-          <input id="js-brcolor" type="color" class="form-control"/>
-        </div>
-      </div>
-      <div class="col-sm-3">
-        <div class="form-group">
-          <label class="label-control">文字顏色</label>
-          <input id="js-txtcolor" type="color" class="form-control"/>
+      <div class="col-md-9">
+        <div class="row">
+          <div class="col-md-3">
+            <div class="form-group">
+              <label class="label-control">背景顏色</label>
+              <input id="js-bgcolor" type="color" class="form-control"/>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label class="label-control">邊線顏色</label>
+              <input id="js-brcolor" type="color" class="form-control"/>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label class="label-control">文字顏色</label>
+              <input id="js-txtcolor" type="color" class="form-control"/>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <p>回復預設值</p><a id="color-default" href="#" class="btn btn-block btn-warning js-changeFontSize">default</a>
+          </div>
         </div>
       </div>
     </div>
     <hr/>
-    <div class="row be-changed">
+    <div class="row">
       <div class="col-md-12">
+        <h2>呈現樣式</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 be-changed">
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis illo, rerum quos necessitatibus dolores quibusdam quaerat nihil iure quasi labore fuga, architecto, exercitationem sapiente, vitae? Velit, voluptas placeat laborum fuga.</p>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis illo, rerum quos necessitatibus dolores quibusdam quaerat nihil iure quasi labore fuga, architecto, exercitationem sapiente, vitae? Velit, voluptas placeat laborum fuga.</p>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis illo, rerum quos necessitatibus dolores quibusdam quaerat nihil iure quasi labore fuga, architecto, exercitationem sapiente, vitae? Velit, voluptas placeat laborum fuga.</p>

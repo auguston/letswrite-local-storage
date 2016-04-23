@@ -1,8 +1,12 @@
 body {
-  font-size: 1rem;
-  background: #FFF; }
+  background: #ECEFF1;
+  color: rgba(38, 50, 56, 0.87); }
+
+.container {
+  max-width: 960px; }
 
 .be-changed {
+  margin: 1rem;
   padding: 1rem;
   border: 2px solid rgba(0, 0, 0, 0.24);
   border-radius: 0.5rem;

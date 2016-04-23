@@ -1,36 +1,50 @@
 <!DOCTYPE html>
-html(lang="en")
+html(lang="zh-tw")
 head
 	meta(charset="UTF-8")
+	meta(http-equiv="X-UA-Compatible", content="IE=edge")
+	meta(name="viewport", content="width=device-width, initial-scale=1")
 	title 改變字型大小、邊線及背景顏色
-	link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css")
+	link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css", integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7", crossorigin="anonymous")
+	link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css",  integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r", crossorigin="anonymous")
 	link(rel="stylesheet", href="assets/css/screen.css")
 body
 	.container
+		.row
+			.col-md-12
+				h2 功能按鈕
+				hr
+			.col-md-3
+				p 文字大小
+				.row
+					// .changeFontSize 改變字型大小的js
+					a.btn.btn-block.btn-primary.js-changeFontSize#font-plus(href="#") A+
+					a.btn.btn-block.btn-primary.js-changeFontSize#font-mini(href="#") A-
+					a.btn.btn-block.btn-warning.js-changeFontSize#font-default(href="#") default
+			.col-md-9
+				.row
+					.col-md-3
+						.form-group
+							label.label-control 背景顏色
+							input#js-bgcolor.form-control(type="color")
+					.col-md-3
+						.form-group
+							label.label-control 邊線顏色
+							input#js-brcolor.form-control(type="color")
+					.col-md-3
+						.form-group
+							label.label-control 文字顏色
+							input#js-txtcolor.form-control(type="color")
+					.col-md-3
+						p 回復預設值
+						a.btn.btn-block.btn-warning.js-changeFontSize#color-default(href="#") default
+
 		hr
 		.row
-			.col-sm-3
-				.form-group
-					label.label-control 文字大小
-					// .changeFontSize 改變字型大小的js
-					a.btn.btn-primary.js-changeFontSize#font-plus(href="#") A+
-					a.btn.btn-primary.js-changeFontSize#font-default(href="#") default
-					a.btn.btn-primary.js-changeFontSize#font-mini(href="#") A-
-			.col-sm-3
-				.form-group
-					label.label-control 背景顏色
-					input#js-bgcolor.form-control(type="color")
-			.col-sm-3
-				.form-group
-					label.label-control 邊線顏色
-					input#js-brcolor.form-control(type="color")
-			.col-sm-3
-				.form-group
-					label.label-control 文字顏色
-					input#js-txtcolor.form-control(type="color")
-		hr
-		.row.be-changed
 			.col-md-12
+				h2 呈現樣式
+		.row
+			.col-md-12.be-changed
 				p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis illo, rerum quos necessitatibus dolores quibusdam quaerat nihil iure quasi labore fuga, architecto, exercitationem sapiente, vitae? Velit, voluptas placeat laborum fuga.
 				p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis illo, rerum quos necessitatibus dolores quibusdam quaerat nihil iure quasi labore fuga, architecto, exercitationem sapiente, vitae? Velit, voluptas placeat laborum fuga.
 				p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis illo, rerum quos necessitatibus dolores quibusdam quaerat nihil iure quasi labore fuga, architecto, exercitationem sapiente, vitae? Velit, voluptas placeat laborum fuga.
