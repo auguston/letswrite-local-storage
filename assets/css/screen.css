@@ -3,7 +3,7 @@ body {
   color: rgba(38, 50, 56, 0.87); }
 
 .container {
-  margin: 1rem;
+  margin: 1rem auto;
   max-width: 960px; }
 
 .be-changed {
