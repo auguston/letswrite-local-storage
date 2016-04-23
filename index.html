@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<<<<<<< HEAD
 <html lang="en-us">
   <head>
     <meta charset="UTF-8">
@@ -55,3 +56,149 @@
   
   </body>
 </html>
+=======
+<html lang="en"></html>
+<head>
+  <meta charset="UTF-8"/>
+  <title>改變字型大小、邊線及背景顏色</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="assets/css/screen.css"/>
+</head>
+<body>
+  <div class="container">
+    <hr/>
+    <div class="row">
+      <div class="col-sm-3">
+        <div class="form-group">
+          <label class="label-control">文字大小</label>
+          <!-- .changeFontSize 改變字型大小的js--><a id="font-plus" href="#" class="btn btn-primary js-changeFontSize">A+</a><a id="font-default" href="#" class="btn btn-primary js-changeFontSize">default</a><a id="font-mini" href="#" class="btn btn-primary js-changeFontSize">A-</a>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="form-group">
+          <label class="label-control">背景顏色</label>
+          <input id="js-bgcolor" type="color" class="form-control"/>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="form-group">
+          <label class="label-control">邊線顏色</label>
+          <input id="js-brcolor" type="color" class="form-control"/>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="form-group">
+          <label class="label-control">文字顏色</label>
+          <input id="js-txtcolor" type="color" class="form-control"/>
+        </div>
+      </div>
+    </div>
+    <hr/>
+    <div class="row be-changed">
+      <div class="col-md-12">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis illo, rerum quos necessitatibus dolores quibusdam quaerat nihil iure quasi labore fuga, architecto, exercitationem sapiente, vitae? Velit, voluptas placeat laborum fuga.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis illo, rerum quos necessitatibus dolores quibusdam quaerat nihil iure quasi labore fuga, architecto, exercitationem sapiente, vitae? Velit, voluptas placeat laborum fuga.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis illo, rerum quos necessitatibus dolores quibusdam quaerat nihil iure quasi labore fuga, architecto, exercitationem sapiente, vitae? Velit, voluptas placeat laborum fuga.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis illo, rerum quos necessitatibus dolores quibusdam quaerat nihil iure quasi labore fuga, architecto, exercitationem sapiente, vitae? Velit, voluptas placeat laborum fuga.</p>
+      </div>
+    </div>
+  </div>
+  <script src="assets/vendor/jquery-1.12.3.min.js"></script>
+  <script>
+    //	要被改變的區塊
+    var beChangedCss = $('.be-changed');
+    
+    //	改變背景色的input
+    var bgcolor = $('#js-bgcolor');
+    
+    //	改變邊線色的input
+    var brcolor = $('#js-brcolor');
+    
+    //	改變字顏色的input
+    var txtcolor = $('#js-txtcolor');
+    
+    //	改變字型大小的按鈕
+    var fontSize = $('.js-changeFontSize');
+    
+    //	檢查瀏覽器是否支援localStorage，支援的話執行function
+    if(typeof(localStorage) !== 'undefined') {
+    
+    	//	執行及儲存顏色的改變
+    	saveColor();
+    	//	執行及儲存字型大小的改變
+    	changeFontSize();
+    
+    	//	執行localStorage
+    	beChangedCss.css('background', localStorage.getItem('ls-background')); // 背景
+    	beChangedCss.css('border-color', localStorage.getItem('ls-borderColor')); // 邊線
+    	beChangedCss.css('color', localStorage.getItem('ls-color')); // 字顏色
+    	beChangedCss.css('font-size', localStorage.getItem('ls-fontSize')); // 大小
+    	
+    }
+    //	不支援localStorage的話執行
+    else {
+    	alert('你的瀏覽器不支援存取功能，無法使用此功能');
+    }
+    
+    //	儲存顏色的function
+    function saveColor() {
+    	//	背景色
+    	bgcolor.on('change', function() {
+    		//	改變背景色
+    		beChangedCss.css('background', bgcolor.val());
+    		//	存取背景色的value：key值叫「ls-background」, value是改變的css值
+    		localStorage.setItem('ls-background', beChangedCss.css('background'));
+    	});
+    
+    	//	邊線色
+    	brcolor.on('change', function() {
+    		//	改變邊線色
+    		beChangedCss.css('border-color', brcolor.val());
+    		//	存取邊線色的值
+    		localStorage.setItem('ls-borderColor', beChangedCss.css('border-color'));
+    	});
+    
+    	//	字顏色
+    	txtcolor.on('change', function() {
+    		//	改變字顏色
+    		beChangedCss.css('color', txtcolor.val());
+    		//	存取字顏色的值
+    		localStorage.setItem('ls-color', beChangedCss.css('color'));
+    	});
+    }
+    
+    //	儲存字型大小的function
+    function changeFontSize() {
+    
+    	//	設定預設字型大小
+    	var defaultSize = beChangedCss.css('font-size');
+    
+    	fontSize.on('click', function(e) {
+    		e.preventDefault();
+    
+    		// 取得目前字型大小
+    		var current = parseFloat(beChangedCss.css('font-size'));
+    
+    		// 取得「＋」按鈕的值
+    		if (this.id == 'font-plus') {
+    			current++;
+    		}
+    		// 取得「-」按鈕的值
+    		else if (this.id == 'font-mini') {
+    			current--;
+    		}
+    		// 取得「default」按鈕的值
+    		else if (this.id == 'font-default') {
+    			current = parseFloat(defaultSize);
+    		}
+    
+    		//	將上面if取得的值寫進css裡面
+    		beChangedCss.css('font-size', current + 'px');
+    
+    		//	儲存改變的字型大小
+    		localStorage.setItem('ls-fontSize', beChangedCss.css('font-size'));
+    	});
+    }
+  </script>
+</body>
+>>>>>>> master
