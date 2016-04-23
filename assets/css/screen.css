@@ -3,10 +3,10 @@ body {
   color: rgba(38, 50, 56, 0.87); }
 
 .container {
+  margin: 1rem;
   max-width: 960px; }
 
 .be-changed {
-  margin: 1rem;
   padding: 1rem;
   border: 2px solid rgba(0, 0, 0, 0.24);
   border-radius: 0.5rem;

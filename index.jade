@@ -67,6 +67,9 @@ body
 		//	改變字型大小的按鈕
 		var fontSize = $('.js-changeFontSize');
 
+		//	還原顏色按鈕
+		var defaultColor = $('#color-default');
+
 		//	檢查瀏覽器是否支援localStorage，支援的話執行function
 		if(typeof(localStorage) !== 'undefined') {
 
@@ -89,6 +92,11 @@ body
 
 		//	儲存顏色的function
 		function saveColor() {
+			//	設定預設顏色
+			var currentBackground = beChangedCss.css('background');
+			var currentBorderColor = beChangedCss.css('border-color');
+			var currentColor = beChangedCss.css('color');
+
 			//	背景色
 			bgcolor.on('change', function() {
 				//	改變背景色
@@ -111,6 +119,20 @@ body
 				beChangedCss.css('color', txtcolor.val());
 				//	存取字顏色的值
 				localStorage.setItem('ls-color', beChangedCss.css('color'));
+			});
+
+			//	顏色還原預設值
+			defaultColor.on('click', function() {
+				beChangedCss.css({
+					'background': currentBackground,
+					'border-color': currentBorderColor,
+					'color': currentColor
+				});
+				
+				//	清除localStorage的值
+				localStorage.removeItem('ls-background');
+				localStorage.removeItem('ls-borderColor');
+				localStorage.removeItem('ls-color');
 			});
 		}
 
