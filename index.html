@@ -22,36 +22,51 @@
     <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PGQ9WQT" height="0" width="0" style="display:none;visibility:hidden"></iframe>
   </noscript>
   <div class="container">
-    <hr/>
     <div class="row">
-      <div class="col-sm-3">
-        <div class="form-group">
-          <label class="label-control">文字大小</label>
-          <!-- .changeFontSize 改變字型大小的js--><a id="font-plus" href="#" class="btn btn-primary js-changeFontSize">A+</a><a id="font-default" href="#" class="btn btn-primary js-changeFontSize">default</a><a id="font-mini" href="#" class="btn btn-primary js-changeFontSize">A-</a>
+      <div class="col-md-12">
+        <h2>功能按鈕</h2>
+        <hr/>
+      </div>
+      <div class="col-md-3">
+        <p>文字大小</p>
+        <div class="row">
+          <!-- .changeFontSize 改變字型大小的js--><a id="font-plus" href="#" class="btn btn-block btn-primary js-changeFontSize">A+</a><a id="font-mini" href="#" class="btn btn-block btn-primary js-changeFontSize">A-</a><a id="font-default" href="#" class="btn btn-block btn-warning js-changeFontSize">default</a>
         </div>
       </div>
-      <div class="col-sm-3">
-        <div class="form-group">
-          <label class="label-control">背景顏色</label>
-          <input id="js-bgcolor" type="color" class="form-control"/>
-        </div>
-      </div>
-      <div class="col-sm-3">
-        <div class="form-group">
-          <label class="label-control">邊線顏色</label>
-          <input id="js-brcolor" type="color" class="form-control"/>
-        </div>
-      </div>
-      <div class="col-sm-3">
-        <div class="form-group">
-          <label class="label-control">文字顏色</label>
-          <input id="js-txtcolor" type="color" class="form-control"/>
+      <div class="col-md-9">
+        <div class="row">
+          <div class="col-md-3">
+            <div class="form-group">
+              <label class="label-control">背景顏色</label>
+              <input id="js-bgcolor" type="color" class="form-control"/>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label class="label-control">邊線顏色</label>
+              <input id="js-brcolor" type="color" class="form-control"/>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label class="label-control">文字顏色</label>
+              <input id="js-txtcolor" type="color" class="form-control"/>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <p>回復預設值</p><a id="color-default" href="#" class="btn btn-block btn-warning js-changeFontSize">default</a>
+          </div>
         </div>
       </div>
     </div>
     <hr/>
-    <div class="row be-changed">
+    <div class="row">
       <div class="col-md-12">
+        <h2>呈現樣式</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 be-changed">
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis illo, rerum quos necessitatibus dolores quibusdam quaerat nihil iure quasi labore fuga, architecto, exercitationem sapiente, vitae? Velit, voluptas placeat laborum fuga.</p>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis illo, rerum quos necessitatibus dolores quibusdam quaerat nihil iure quasi labore fuga, architecto, exercitationem sapiente, vitae? Velit, voluptas placeat laborum fuga.</p>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis illo, rerum quos necessitatibus dolores quibusdam quaerat nihil iure quasi labore fuga, architecto, exercitationem sapiente, vitae? Velit, voluptas placeat laborum fuga.</p>
@@ -76,6 +91,9 @@
     //	改變字型大小的按鈕
     var fontSize = $('.js-changeFontSize');
     
+    //	還原顏色按鈕
+    var defaultColor = $('#color-default');
+    
     //	檢查瀏覽器是否支援localStorage，支援的話執行function
     if(typeof(localStorage) !== 'undefined') {
     
@@ -98,6 +116,11 @@
     
     //	儲存顏色的function
     function saveColor() {
+    	//	設定預設顏色
+    	var currentBackground = beChangedCss.css('background');
+    	var currentBorderColor = beChangedCss.css('border-color');
+    	var currentColor = beChangedCss.css('color');
+    
     	//	背景色
     	bgcolor.on('change', function() {
     		//	改變背景色
@@ -120,6 +143,20 @@
     		beChangedCss.css('color', txtcolor.val());
     		//	存取字顏色的值
     		localStorage.setItem('ls-color', beChangedCss.css('color'));
+    	});
+    
+    	//	顏色還原預設值
+    	defaultColor.on('click', function() {
+    		beChangedCss.css({
+    			'background': currentBackground,
+    			'border-color': currentBorderColor,
+    			'color': currentColor
+    		});
+    
+    		//	清除localStorage的值
+    		localStorage.removeItem('ls-background');
+    		localStorage.removeItem('ls-borderColor');
+    		localStorage.removeItem('ls-color');
     	});
     }
     

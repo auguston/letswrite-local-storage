@@ -1,6 +1,10 @@
 body {
-  font-size: 1rem;
-  background: #f5f5f5; }
+  background: #ECEFF1;
+  color: rgba(38, 50, 56, 0.87); }
+
+.container {
+  margin: 1rem auto;
+  max-width: 960px; }
 
 .be-changed {
   padding: 1rem;

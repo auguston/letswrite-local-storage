@@ -19,30 +19,41 @@ body
 	noscript
 		iframe(src="https://www.googletagmanager.com/ns.html?id=GTM-PGQ9WQT", height="0", width="0", style="display:none;visibility:hidden")
 	.container
+		.row
+			.col-md-12
+				h2 功能按鈕
+				hr
+			.col-md-3
+				p 文字大小
+				.row
+					// .changeFontSize 改變字型大小的js
+					a.btn.btn-block.btn-primary.js-changeFontSize#font-plus(href="#") A+
+					a.btn.btn-block.btn-primary.js-changeFontSize#font-mini(href="#") A-
+					a.btn.btn-block.btn-warning.js-changeFontSize#font-default(href="#") default
+			.col-md-9
+				.row
+					.col-md-3
+						.form-group
+							label.label-control 背景顏色
+							input#js-bgcolor.form-control(type="color")
+					.col-md-3
+						.form-group
+							label.label-control 邊線顏色
+							input#js-brcolor.form-control(type="color")
+					.col-md-3
+						.form-group
+							label.label-control 文字顏色
+							input#js-txtcolor.form-control(type="color")
+					.col-md-3
+						p 回復預設值
+						a.btn.btn-block.btn-warning.js-changeFontSize#color-default(href="#") default
+
 		hr
 		.row
-			.col-sm-3
-				.form-group
-					label.label-control 文字大小
-					// .changeFontSize 改變字型大小的js
-					a.btn.btn-primary.js-changeFontSize#font-plus(href="#") A+
-					a.btn.btn-primary.js-changeFontSize#font-default(href="#") default
-					a.btn.btn-primary.js-changeFontSize#font-mini(href="#") A-
-			.col-sm-3
-				.form-group
-					label.label-control 背景顏色
-					input#js-bgcolor.form-control(type="color")
-			.col-sm-3
-				.form-group
-					label.label-control 邊線顏色
-					input#js-brcolor.form-control(type="color")
-			.col-sm-3
-				.form-group
-					label.label-control 文字顏色
-					input#js-txtcolor.form-control(type="color")
-		hr
-		.row.be-changed
 			.col-md-12
+				h2 呈現樣式
+		.row
+			.col-md-12.be-changed
 				p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis illo, rerum quos necessitatibus dolores quibusdam quaerat nihil iure quasi labore fuga, architecto, exercitationem sapiente, vitae? Velit, voluptas placeat laborum fuga.
 				p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis illo, rerum quos necessitatibus dolores quibusdam quaerat nihil iure quasi labore fuga, architecto, exercitationem sapiente, vitae? Velit, voluptas placeat laborum fuga.
 				p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis illo, rerum quos necessitatibus dolores quibusdam quaerat nihil iure quasi labore fuga, architecto, exercitationem sapiente, vitae? Velit, voluptas placeat laborum fuga.
@@ -64,6 +75,9 @@ body
 
 		//	改變字型大小的按鈕
 		var fontSize = $('.js-changeFontSize');
+
+		//	還原顏色按鈕
+		var defaultColor = $('#color-default');
 
 		//	檢查瀏覽器是否支援localStorage，支援的話執行function
 		if(typeof(localStorage) !== 'undefined') {
@@ -87,6 +101,11 @@ body
 
 		//	儲存顏色的function
 		function saveColor() {
+			//	設定預設顏色
+			var currentBackground = beChangedCss.css('background');
+			var currentBorderColor = beChangedCss.css('border-color');
+			var currentColor = beChangedCss.css('color');
+
 			//	背景色
 			bgcolor.on('change', function() {
 				//	改變背景色
@@ -109,6 +128,20 @@ body
 				beChangedCss.css('color', txtcolor.val());
 				//	存取字顏色的值
 				localStorage.setItem('ls-color', beChangedCss.css('color'));
+			});
+
+			//	顏色還原預設值
+			defaultColor.on('click', function() {
+				beChangedCss.css({
+					'background': currentBackground,
+					'border-color': currentBorderColor,
+					'color': currentColor
+				});
+
+				//	清除localStorage的值
+				localStorage.removeItem('ls-background');
+				localStorage.removeItem('ls-borderColor');
+				localStorage.removeItem('ls-color');
 			});
 		}
 
